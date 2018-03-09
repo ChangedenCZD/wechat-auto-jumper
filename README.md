@@ -1,8 +1,9 @@
-微信跳一跳小游戏自动跳跃脚本。
+## 微信跳一跳小游戏自动跳跃脚本
 
 [更新日志](/CHANGE_LOG.md)
 
-####开发环境：####
+### 开发环境：
+
 Ubuntu 16
 
 IDEA 2017.3.4
@@ -11,7 +12,8 @@ Node.js v9.5.0
 
 Npm v5.7.1
 
-####环境配置：####
+### 环境配置：
+
 [安装OpenCV](https://github.com/peterbraden/node-opencv)
 
 下载本项目 ``git clone https://github.com/ChangedenCZD/wechat-auto-jumper.git``
