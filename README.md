@@ -25,8 +25,8 @@ Npm v5.7.1
 运行项目 ``node ./src/index-2.0.js``
 
 ####
-[意见反馈](https://github.com/ChangedenCZD/wechat-auto-jumper/issues)
-[开源网站](https://www.chansos.com)
-[其它开源项目](https://github.com/ChangedenCZD?tab=repositories)
+[ 意见反馈 ](https://github.com/ChangedenCZD/wechat-auto-jumper/issues)
+[ 开源网站 ](https://www.chansos.com)
+[ 其它开源项目 ](https://github.com/ChangedenCZD?tab=repositories)
 ####
 
