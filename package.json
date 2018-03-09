@@ -1,6 +1,6 @@
 {
   "name": "wechat-auto-jumper",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "微信跳一跳小游戏自动跳跃脚本。",
   "main": "index.js",
   "scripts": {
