@@ -4,7 +4,7 @@ const getPixels = require('get-pixels'); // 获取图片Buffer
 const path = require('path');
 const tesseract = require('node-tesseract'); // OCR
 const lowThresh = 20;
-const highThresh = 200;
+const highThresh = 195;
 const nIters = 0;
 
 const RED = [0, 0, 255]; // B, G, R
@@ -22,6 +22,8 @@ const DEBUG = false;
 
 let timerId = null;
 let lastTargetLength = 0;
+let count = 0;
+let maxCount = 0;
 
 function run () {
     if (DEBUG) {
@@ -39,6 +41,7 @@ function run () {
                 } else {
                     if (text.indexOf('最高分') > 0 || text.indexOf('排行榜') > 0) {//重开
                         console.log('重开');
+                        count = 0;
                         swipe(554, 1584, 554, 1584, 317);
                         startTimer();
                     } else {
@@ -97,6 +100,9 @@ function jump () {
                 findPixelByX(LEFT_PART_FILE_PATH, left[0]).then(left => {
                     findIndex(RIGHT_PART_FILE_PATH).then(right => {
                         findPixelByX(RIGHT_PART_FILE_PATH, right[0]).then(right => {
+                            count++;
+                            maxCount = Math.max(count, maxCount);
+                            console.log(`第${count}次跳跃，最高次数${maxCount}次`);
                             simulateSwipe(computeDistance(left, right, halfWidth), width, height);
                         });
                     });
