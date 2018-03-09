@@ -56,9 +56,11 @@ run();
 function startTimer () {
     if (!DEBUG) {
         stopTimer();
+        let delay = 1444 + parseInt(((Math.random() * 100000) % 7000));
         timerId = setTimeout(() => {
             run();
-        }, 4000 + (genRandomNumber() % 7) * 1000);
+        }, delay);
+        console.log(`${delay} ms 后继续`);
     }
 }
 
@@ -90,15 +92,20 @@ function jump () {
         let rightPart = outputFile.crop(halfWidth, 0, halfWidth, targetHeight);
         leftPart.save(LEFT_PART_FILE_PATH);
         rightPart.save(RIGHT_PART_FILE_PATH);
-        findIndex(LEFT_PART_FILE_PATH).then(left => {
-            findPixelByX(LEFT_PART_FILE_PATH, left[0]).then(left => {
-                findIndex(RIGHT_PART_FILE_PATH).then(right => {
-                    findPixelByX(RIGHT_PART_FILE_PATH, right[0]).then(right => {
-                        simulateSwipe(computeDistance(left, right, halfWidth), width, height);
+        try {
+            findIndex(LEFT_PART_FILE_PATH).then(left => {
+                findPixelByX(LEFT_PART_FILE_PATH, left[0]).then(left => {
+                    findIndex(RIGHT_PART_FILE_PATH).then(right => {
+                        findPixelByX(RIGHT_PART_FILE_PATH, right[0]).then(right => {
+                            simulateSwipe(computeDistance(left, right, halfWidth), width, height);
+                        });
                     });
                 });
             });
-        });
+        } catch (e) {
+            console.error(e);
+            startTimer();
+        }
     });
 }
 
@@ -269,7 +276,10 @@ function computeTargetIndex (pixels) {
     let topPixel = pixels[0];
     let bottomPixel = pixels[1];
     let a = bottomPixel[1] - topPixel[1];
-    if (a < 200 && pixels.length > 4) {
+    if (a < 11) {
+        topPixel = pixels[1];
+        bottomPixel = pixels[2];
+    } else if (a < 200 && pixels.length > 4) {
         let a = bottomPixel[1] - topPixel[1];
         let b = pixels[3][1] - pixels[2][1];
         if (b >= a && (pixels[2][1] - pixels[1][1]) < a && (a + 40) >= b) {
