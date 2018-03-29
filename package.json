@@ -1,6 +1,6 @@
 {
   "name": "wechat-auto-jumper",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "微信跳一跳小游戏自动跳跃脚本。",
   "main": "index.js",
   "scripts": {
@@ -11,9 +11,11 @@
   "dependencies": {
     "fs": "0.0.1-security",
     "get-pixels": "^3.3.0",
-    "node-tesseract": "^0.2.7",
+    "md5": "^2.2.1",
     "opencv": "^6.0.0",
+    "opencv4nodejs": "^4.0.0",
     "path": "^0.12.7",
+    "request": "^2.85.0",
     "shelljs": "^0.8.1"
   }
 }
